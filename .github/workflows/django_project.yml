@@ -36,7 +36,6 @@ jobs:
     - name: Lint with flake8
       run: |
         pipenv run flake8 .
-        psql -c "CREATE DATABASE testdb;" -U postgres
     - name: Test with pytest
       run: |
         pipenv run pytest --cov=pypro
