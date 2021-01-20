@@ -5,9 +5,9 @@ pycodestyle==2.6.0
 pyflakes==2.2.0
 
 # Deps do pytest
+attrs==20.3.0
 py==1.10.0
 pluggy==0.13.1
-attrs==17.4.0
 pytest-mock==3.3.1
 
 #Coverage
