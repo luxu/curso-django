@@ -6,6 +6,7 @@ jobs:
   build:
     env:
       PIPENV_NO_INHERIT: 1
+      PIPENV_VENV_IN_PROJECT: 1
       PIPENV_IGNORE_VIRTUALENVS: 1
     runs-on: ubuntu-latest
 
@@ -32,14 +33,12 @@ jobs:
         pip install pipenv codecov
         pip install -q -r requirements-dev.txt
         pipenv sync --dev
-
     - name: Lint with flake8
       run: |
         pipenv run flake8 .
-        pipenv run pytest --cov=pypro
     - name: Test with pytest
       run: |
-        pytest pypro --cov=pypro
+        pipenv run pytest --cov=pypro
     - name: Posting Coverage
       env:
         CODECOV_TOKEN: "4e6a8fc6-27e4-4895-9779-5660a3c86db4"
