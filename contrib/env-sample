@@ -1,19 +1,7 @@
 DEBUG=False
 SECRET_KEY=Change for a secret here
 ALLOWED_HOSTS=localhost, 127.0.0.1
-SENTRY_DSN=
 DATABASE_URL=postgres://postgres:postgres@localhost/postgres
-
-# Pagarme credentials
-PAGARME_API_KEY=ak_test_6yd4kbaJrWzdn61m4De5yzn7jZuTt9
-PAGARME_CRYPTO_KEY=
-
-CHAVE_PAGARME_CRIPTOGRAFIA_PUBLICA=ak_test_6yd4kbaJrWzdn61m4De5yzn7jZuTt9
-CHAVE_PAGARME_API_PRIVADA=
-POSTHOG_API_URL=
-POSTHOG_API_KEY=
-
-
 
 # Amazon S3 configuration
 DJANGO_AWS_ACCESS_KEY_ID=
