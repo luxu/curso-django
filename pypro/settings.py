@@ -16,6 +16,9 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from decouple import config, Csv
 import dj_database_url
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'pypro.base'
 ]
 
@@ -126,7 +131,21 @@ USE_TZ = True
 # Configuração de ambiente de desenvolvimento
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#
+CLOUDINARY_STORAGE  = {
+    'cloud_name' : 'hmspgzndp',
+    'api_key' : '819666883846779',
+    'api_secret': 'OM_78CNCocrPiKCyWl9NHpFX7Sk'
+}
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+
+DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
+
+# cloudinary.config(
+#     cloud_name="luxu",
+#     api_key="941911956684585",
+#     api_secret="bGaC2j9ysZOD6AYnEBnfrq-lfHc"
+# )
