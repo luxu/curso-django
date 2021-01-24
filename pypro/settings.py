@@ -35,6 +35,8 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
+AUTH_USER_MODEL = 'base.User'
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -132,20 +134,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-#
-CLOUDINARY_STORAGE  = {
-    'cloud_name' : 'hmspgzndp',
-    'api_key' : '819666883846779',
-    'api_secret': 'OM_78CNCocrPiKCyWl9NHpFX7Sk'
-}
 
-MEDIA_URL = '/media/'
-
-DEFAULT_FILE_STORAGE='cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# MEDIA_URL = '/media/'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
-
-# cloudinary.config(
-#     cloud_name="luxu",
-#     api_key="941911956684585",
-#     api_secret="bGaC2j9ysZOD6AYnEBnfrq-lfHc"
-# )
+cloudinary.config(
+    cloud_name=config('cloud_name'),
+    api_key=config('api_key'),
+    api_secret=config('api_secret'),
+)

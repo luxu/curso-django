@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pypro.base.views import home
+from pypro.base.views import home, upload, edit
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
+    path('create/', upload, name='photo_album'),
+    path('edit/<id>/', edit, name='edit_album'),
 ]
