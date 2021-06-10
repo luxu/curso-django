@@ -4,28 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-flake8 = "==3.8.4"
-mccabe = "==0.6.1"
-pycodestyle = "==2.6.0"
-pyflakes = "==2.2.0"
-attrs = "==20.3.0"
-py = "==1.10.0"
-pluggy = "==0.13.1"
-pytest-mock = "==3.3.1"
-coverage = "==5.3"
-codecov = "==2.1.11"
-pytest-cov = "==2.10.1"
-pytest-django = "==4.1.0"
 cloudinary = "==1.24.0"
 dj-database-url = "==0.5.0"
 django-cloudinary-storage = "==0.3.0"
 gunicorn = "==20.0.4"
 python-decouple = "==3.4"
 psycopg2-binary = "==2.8.6"
+Collectfast = "==2.2.0"
 Django = "==3.1.4"
 Pillow = "==8.1.0"
 
 [dev-packages]
 
 [requires]
-python_version = "3.8"
+python_version = "3.9"
