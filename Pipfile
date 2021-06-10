@@ -12,7 +12,7 @@ python-decouple = "==3.4"
 psycopg2-binary = "==2.8.6"
 Collectfast = "==2.2.0"
 Django = "==3.1.4"
-Pillow = "==8.1.0"
+pillow = "*"
 
 [dev-packages]
 
