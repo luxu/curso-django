@@ -11,8 +11,8 @@ gunicorn = "==20.0.4"
 python-decouple = "==3.4"
 psycopg2-binary = "==2.8.6"
 Collectfast = "==2.2.0"
-Django = "==3.1.4"
-pillow = "*"
+Django = "==3.2.4"
+pillow = "==8.2.0"
 
 [dev-packages]
 
