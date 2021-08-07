@@ -1,8 +1,11 @@
 from django.urls import path
 
-from .views import upload
+from pypro.base.views import home, trader, investy
+
+app_name = 'base'
 
 urlpatterns = [
-    path('/create', upload, name='create'),
-    # path('', upload, name='photo_album'),
+    path('', home, name='home'),
+    path('trader/<str:country>/<str:stock>/', trader, name='trader'),
+    path('trader/', investy, name='investy'),
 ]
