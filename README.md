@@ -1,6 +1,6 @@
 # curso-django
 
-Sistema no Curso de Python Pro do Renzo
+Sistema desenvolvido no Curso de Python Pro do Renzo
 
 ## regenerate SECRET_KEY by CMD
 
