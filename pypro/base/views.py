@@ -10,10 +10,10 @@ def home(request):
 
 
 def trader(request, country, stock):
-    template_name = 'base/home.html'
-    context = {}
+    # template_name = 'base/home.html'
+    # context = {}
     if not country:
-        country ='Brazil'
+        country = 'Brazil'
         stock = 'PETR4'
     df = investpy.get_stock_historical_data(
         stock=stock.upper(),
