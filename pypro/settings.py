@@ -9,9 +9,6 @@ import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
-import sentry_sdk
-from sentry_sdk.integrations.django import DjangoIntegration
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY')
