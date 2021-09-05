@@ -14,7 +14,6 @@ Collectfast = "==2.2.0"
 Django = "==3.2.4"
 pillow = "==8.2.0"
 django-extensions = "*"
-ipython = "*"
 
 [dev-packages]
 pytest = "*"
@@ -22,6 +21,7 @@ codecov = "*"
 pytest-cov = "*"
 pytest-django = "*"
 flake8 = "*"
+ipython = "*"
 
 [requires]
 python_version = "3.9"
