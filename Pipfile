@@ -13,6 +13,8 @@ psycopg2-binary = "==2.8.6"
 Collectfast = "==2.2.0"
 Django = "==3.2.4"
 pillow = "==8.2.0"
+django-extensions = "*"
+ipython = "*"
 
 [dev-packages]
 pytest = "*"
