@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'collectfast',
     'cloudinary_storage',
     'cloudinary',
+    'django_extensions',
     'pypro.base'
 ]
 
