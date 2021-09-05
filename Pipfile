@@ -15,6 +15,11 @@ Django = "==3.2.4"
 pillow = "==8.2.0"
 
 [dev-packages]
+pytest = "*"
+codecov = "*"
+pytest-cov = "*"
+pytest-django = "*"
+flake8 = "*"
 
 [requires]
 python_version = "3.9"
