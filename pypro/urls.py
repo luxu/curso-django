@@ -4,7 +4,11 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('contas/', include('django.contrib.auth.urls')),
     path('', include('pypro.base.urls')),
+    path('modulos/', include('pypro.modulos.urls')),
+    path('aperitivos/', include('pypro.aperitivos.urls')),
+    path('turmas/', include('pypro.turmas.urls')),
 ]
 
 if settings.DEBUG:

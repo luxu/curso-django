@@ -1,16 +1,15 @@
 import os
 from functools import partial
-from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
-from decouple import config, Csv
-import dj_database_url
 import cloudinary
-import cloudinary.uploader
 import cloudinary.api
+import cloudinary.uploader
+import dj_database_url
+import sentry_sdk
+from decouple import config, Csv
+from sentry_sdk.integrations.django import DjangoIntegration
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-ROOT_DIR = Path(__file__).ancestor(2)
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = config('SECRET_KEY')
 
@@ -20,7 +19,15 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 AUTH_USER_MODEL = 'base.User'
 
+LOGIN_URL = '/contas/login/'
+LOGIN_REDIRECT_URL = '/modulos/'
+LOGOUT_REDIRECT_URL = '/'
+
 INSTALLED_APPS = [
+    'pypro.base',
+    'pypro.modulos',
+    'pypro.aperitivos',
+    'pypro.turmas',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,8 +37,8 @@ INSTALLED_APPS = [
     'collectfast',
     'cloudinary_storage',
     'cloudinary',
+    'ordered_model',
     'django_extensions',
-    'pypro.base'
 ]
 
 MIDDLEWARE = [
@@ -63,6 +70,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'pypro.wsgi.application'
+
+# Configuração de envio de Email
+
+EMAIL_BACKEND = config('EMAIL_BACKEND')
+EMAIL_HOST = config('EMAIL_HOST')
+EMAIL_PORT = config('EMAIL_PORT')
+EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+
+# Configuração Django Debug Tollbar
 
 INTERNAL_IPS = config('INTERNAL_IPS', cast=Csv(), default='127.0.0.1')
 
@@ -100,18 +118,19 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+CLOUDINARY_URL = config('CLOUDINARY_URL', default=False)
+
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 MEDIA_URL = '/media/'
-
-CLOUDINARY_URL = config('CLOUDINARY_URL', default=False)
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
 COLLECTFAST_ENABLED = False
 
 # Storage configuration in
 if CLOUDINARY_URL:
-    CLOUDINARY_STORAGE = {    # pragma: no cover
+    CLOUDINARY_STORAGE = {  # pragma: no cover
         'CLOUD_NAME': config('CLOUD_NAME'),
         'API_KEY': config('API_KEY'),
         'API_SECRET': config('API_SECRET')
@@ -135,16 +154,5 @@ if CLOUDINARY_URL:
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# sentry_sdk.init(
-#     dsn=config('SENTRY_SDK'),
-#     integrations=[DjangoIntegration()],
-#
-#     # Set traces_sample_rate to 1.0 to capture 100%
-#     # of transactions for performance monitoring.
-#     # We recommend adjusting this value in production.
-#     traces_sample_rate=1.0,
-#
-#     # If you wish to associate users to errors (assuming you are using
-#     # django.contrib.auth) you may enable sending PII data.
-#     send_default_pii=True
-# )
+if SENTRY_DSN := config('SENTRY_DSN', default=None):
+    sentry_sdk.init(dsn=SENTRY_DSN, integrations=[DjangoIntegration()])

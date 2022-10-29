@@ -17,6 +17,10 @@ django-extensions = "*"
 requests = "==2.27.0"
 prompt-toolkit = "==3.0.24"
 parso = "==0.8.3"
+model-mommy = "*"
+django-ordered-model = "*"
+model-bakery = "*"
+sentry-sdk = "*"
 
 [dev-packages]
 pytest = "*"
